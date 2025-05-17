@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 232 35% 6%;
+  --foreground: 210 40% 98%;
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 65%;
+  --popover: 232 35% 6%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 25% 8%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 5% 15%;
+  --input: 240 5% 15%;
+  --primary: 210 100% 52%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 25% 10%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 25% 12%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 5% 25%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom styles for the cosmic background */
+.dark body {
+  background: 
+    radial-gradient(ellipse at top, rgba(17, 24, 60, 0.4), transparent 70%),
+    radial-gradient(ellipse at bottom, rgba(76, 0, 139, 0.4), transparent 70%),
+    linear-gradient(to bottom, hsl(232, 35%, 6%), hsl(235, 40%, 4%));
+  background-attachment: fixed;
+  position: relative;
+}
+
+.dark body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 40% 70%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 50% 40%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 60% 80%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 70% 20%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 80% 50%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 90% 30%, rgba(255, 255, 255, 0.6), transparent);
+  background-size: 200% 200%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Element card glow effect */
+.dark .element-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.dark .element-card:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px currentColor;
+}
+
+.dark .card {
+  backdrop-filter: blur(8px);
+  background-color: rgba(24, 24, 38, 0.5);
+  border: 1px solid rgba(66, 66, 77, 0.4);
+}
